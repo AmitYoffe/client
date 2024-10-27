@@ -1,8 +1,12 @@
 1) Add theme 
-2) 
-3)
+2) some header/ sidebar with a toggle button between directors and movies
+3) export index files
 
-Today todo:
-1) functional table component, make it dynamic 
-for movies and directors
-2) 
+28/10 - Today todo:
+1) Make the table component dynamic by route, if doing so by route is imposible,
+ then i should try by the data's type (Director[] / Movie[]) inside the component
+
+2) Refactor the data-grid's CRUD into popup components with the same functionality
+
+3) 
+

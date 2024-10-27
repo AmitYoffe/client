@@ -1,7 +1,9 @@
 'use client'
+import DataTable from "@/components/DataGridComps/DataTable";
+import { Director } from "@/models/director";
+import { getDirectors } from "@/services/directorService";
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getDirectors } from "../../services/directorService";
-import { Director } from "../../models/director";
 
 export default function DirectorsPage() {
     const [directors, setDirectors] = useState<Director[]>();
@@ -15,19 +17,15 @@ export default function DirectorsPage() {
     }, []);
 
     return (
-        <div>
-            <h1>Directors</h1>
-            <ul>
-                {directors && directors.map(director => (
-                    <li key={director.id}>
-                        <span>
-                            <p>{director.firstName}</p>
-                            <p>{director.lastName}</p>
-                            - - - - - - - - - - - - - - - - 
-                        </span>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <Box sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            // width: '100%',
+            padding: '5em',
+        }}>
+            {directors && <DataTable data={directors} />}
+        </Box>
     );
 };
