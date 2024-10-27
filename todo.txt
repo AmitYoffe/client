@@ -1,0 +1,8 @@
+1) Add theme 
+2) 
+3)
+
+Today todo:
+1) functional table component, make it dynamic 
+for movies and directors
+2) 
