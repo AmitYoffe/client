@@ -1,12 +1,12 @@
 1) Add theme 
-2) some header/ sidebar with a toggle button between directors and movies
-3) export index files
-4) Refactor the data-grid's CRUD into popup components with the same functionality
-5) read up more on when to use 'use client' NextJs' 
+2) some header/ sidebar with a toggle button between directors and movies inside the layout compoennt
+3) Refactor the data-grid's CRUD into popup components with the same functionality
+4) add loading.tsx + error.tsx
+5) 
 
 28/10 - Today todo:
-1) connect search capabilities with server side GET method
+1) read up more on when to use 'use client' NextJs' 
 
-2) 
+2)
 
 3) 

@@ -1,7 +1,6 @@
 import { directorColumns } from "@/app/directors/utils/const";
 import { movieColumns } from "@/app/movies/utils/const";
-import { Director } from "@/models/director";
-import { Movie } from "@/models/movie";
+import { Director, Movie } from "@/models";
 import { Box } from "@mui/material";
 import {
   DataGrid,
