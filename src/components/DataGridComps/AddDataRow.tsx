@@ -32,7 +32,7 @@ export default function AddDataRow(props: AddDataRowProps) {
   return (
     <Button
       sx={{
-        width: "11rem",
+        width: "100%",
         marginTop: "1rem",
         marginX: "auto",
         color: "primary",
@@ -42,7 +42,7 @@ export default function AddDataRow(props: AddDataRowProps) {
       }
       onClick={handleClick}
     >
-      Add
+      also Add but i will delete it
     </Button>
   );
 }

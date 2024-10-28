@@ -1,11 +1,12 @@
 1) Add theme 
 2) some header/ sidebar with a toggle button between directors and movies inside the layout compoennt
-3) Refactor the data-grid's CRUD into popup components with the same functionality
-4) add loading.tsx + error.tsx
+3) add loading.tsx + error.tsx
+4) add some roll up to make my project faster...
 5) 
 
-28/10 - Today todo:
-1) read up more on when to use 'use client' NextJs' 
+29/10 - Today todo:
+1) Refactor the data-grid's CRUD into popup components with the same functionality
+ - today i'm finishing the POST method
 
 2)
 

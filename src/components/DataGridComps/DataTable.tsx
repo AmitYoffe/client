@@ -11,6 +11,7 @@ import {
   GridValidRowModel,
 } from "@mui/x-data-grid";
 import { useState } from "react";
+import AddPopup from "../AddPopup";
 import AddDataRow from "./AddDataRow";
 import SearchInput from "./SearchInput";
 
@@ -110,6 +111,7 @@ export default function DataTable({ data }: IDataTable) {
         onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
       />
+      <AddPopup dataType={dataType} />
       <AddDataRow
         setRows={setRows}
         setRowModesModel={setRowModesModel}
