@@ -24,14 +24,17 @@ import DropDown from './DropDown';
 import SearchInput from './SearchInput';
 
 interface IDataTable {
-    data: Movie[] | Director[]
+    data: Movie[] | Director[],
+    currentRouteName: string,
 }
 
-export default function DataTable({ data }: IDataTable) {
+export default function DataTable({ data, currentRouteName }: IDataTable) {
     const [rows, setRows] = useState<GridValidRowModel[]>(data);
     const [rowModesModel, setRowModesModel] = useState<GridRowModesModel>({});
-    const [currentRouteName, setCurrentRouteName] = useState('');
+    // const [currentRouteName, setCurrentRouteName] = useState('');
+
     // const router = useRouter();
+    console.log("currentRouteName: ", currentRouteName);
 
     // useEffect(() => {
     //     if (router && router.pathname) {
@@ -44,7 +47,7 @@ export default function DataTable({ data }: IDataTable) {
     //         console.log("currentRouteName: ", currentRouteName);
     //     }
     // }, [router]);
-    
+
     const handleRowEditStop: GridEventListener<'rowEditStop'> = (params, event) => {
         if (params.reason === GridRowEditStopReasons.rowFocusOut) {
             event.defaultMuiPrevented = true;

@@ -32,4 +32,6 @@ export default function RootLayout({
   );
 }
 
+// try to pass useRoute through layout instead of page.tsx
+
 // how exactly is this being used if its hasn't been called anywhere in the project?  
