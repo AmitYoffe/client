@@ -22,6 +22,7 @@ interface IDataTable {
 export default function DataTable({ data }: IDataTable) {
   const [rows, setRows] = useState<GridValidRowModel[]>(data);
   const [rowModesModel, setRowModesModel] = useState<GridRowModesModel>({});
+
   const dataType = `${
     Array.isArray(data) && data.length > 0 && "title" in data[0]
       ? "movies"
@@ -71,6 +72,10 @@ export default function DataTable({ data }: IDataTable) {
     setRowModesModel(newRowModesModel);
   };
 
+  const handleSearchResults = (results: GridValidRowModel[]) => {
+    setRows(results);
+  };
+
   return (
     <Box
       sx={{
@@ -92,7 +97,10 @@ export default function DataTable({ data }: IDataTable) {
           paddingBottom: "1em",
         }}
       >
-        <SearchInput dataType={dataType} />
+        <SearchInput
+          dataType={dataType}
+          onSearchResults={handleSearchResults}
+        />
       </Box>
       <DataGrid
         rows={rows}
@@ -103,7 +111,11 @@ export default function DataTable({ data }: IDataTable) {
         onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
       />
-      <AddDataRow setRows={setRows} setRowModesModel={setRowModesModel} dataType={dataType} />
+      <AddDataRow
+        setRows={setRows}
+        setRowModesModel={setRowModesModel}
+        dataType={dataType}
+      />
     </Box>
   );
 }
