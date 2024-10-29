@@ -35,6 +35,8 @@ export default function DirectorFields() {
       />
       {/* Maybe make a dropdown of all movies already
        related to him or just all movies? */}
+
+      {/* // I gotta make it some sort of array anyway... */}
       <TextField
         required
         margin="dense"

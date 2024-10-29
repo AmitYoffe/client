@@ -23,7 +23,6 @@ export default function MoviesPage() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        // width: '100%',
         padding: "5em",
       }}
     >

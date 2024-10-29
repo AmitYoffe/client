@@ -26,6 +26,13 @@ export default function SearchInput({
 
   return (
     <TextField
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        width: "35%",
+        minWidth: "200px",
+        paddingBottom: "1em",
+      }}
       id="outlined-basic"
       variant="outlined"
       label={`Search ${dataType}`}

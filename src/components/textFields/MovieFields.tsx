@@ -40,7 +40,7 @@ export default function MovieFields() {
         id="year"
         name="year"
         label="year"
-        type="datetime-local"
+        type="number"
         fullWidth
         variant="standard"
       />

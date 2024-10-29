@@ -12,7 +12,6 @@ import {
 } from "@mui/x-data-grid";
 import { useState } from "react";
 import AddPopup from "../AddPopup";
-import AddDataRow from "./AddDataRow";
 import SearchInput from "./SearchInput";
 
 interface IDataTable {
@@ -76,32 +75,24 @@ export default function DataTable({ data }: IDataTable) {
     setRows(results);
   };
 
+  const addNewRow = (newRow: GridValidRowModel) => {
+    setRows((prevRows) => [...prevRows, newRow]);
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        // alignItems: 'center',
         alignContent: "center",
-        height: 500,
+        height: "80%",
         width: "100%",
         border: 1,
+        // borderColor: 'primary.',
         padding: "1em",
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          width: "100%",
-          paddingBottom: "1em",
-        }}
-      >
-        <SearchInput
-          dataType={dataType}
-          onSearchResults={handleSearchResults}
-        />
-      </Box>
+      <SearchInput dataType={dataType} onSearchResults={handleSearchResults} />
       <DataGrid
         rows={rows}
         columns={dataType === "directors" ? directorColumns : movieColumns}
@@ -111,12 +102,10 @@ export default function DataTable({ data }: IDataTable) {
         onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
       />
-      <AddPopup dataType={dataType} />
-      <AddDataRow
-        setRows={setRows}
-        setRowModesModel={setRowModesModel}
-        dataType={dataType}
-      />
+      <AddPopup dataType={dataType} onAddRow={addNewRow} />
     </Box>
   );
 }
+
+// Bug: 2 requests are sent each time in the network,
+// so the ID in the client side jump in twos each time even though the DB looks fine
