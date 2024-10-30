@@ -1,6 +1,10 @@
 import { TextField } from "@mui/material";
 
-export default function MovieFields() {
+interface IMovieFields {
+  required: boolean;
+}
+
+export default function MovieFields({ required }: IMovieFields) {
   return (
     <>
       {/* <TextField
@@ -16,7 +20,7 @@ export default function MovieFields() {
       /> */}
       <TextField
         autoFocus
-        required
+        required={required ? required : false}
         margin="dense"
         id="title"
         name="title"
@@ -26,7 +30,7 @@ export default function MovieFields() {
       />
       {/* Maybe make a dropdown of all directors? */}
       <TextField
-        required
+        required={required ? required : false}
         margin="dense"
         id="director"
         name="director"
@@ -35,7 +39,7 @@ export default function MovieFields() {
         variant="standard"
       />
       <TextField
-        required
+        required={required ? required : false}
         margin="dense"
         id="year"
         name="year"

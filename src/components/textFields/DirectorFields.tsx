@@ -1,6 +1,10 @@
 import { TextField } from "@mui/material";
 
-export default function DirectorFields() {
+interface IDirectorFields {
+  required: boolean;
+}
+
+export default function DirectorFields({ required }: IDirectorFields) {
   return (
     <>
       {/* <TextField
@@ -16,7 +20,7 @@ export default function DirectorFields() {
       /> */}
       <TextField
         autoFocus
-        required
+        required={required ? required : false}
         margin="dense"
         id="firstName"
         name="firstName"
@@ -25,7 +29,7 @@ export default function DirectorFields() {
         variant="standard"
       />
       <TextField
-        required
+        required={required ? required : false}
         margin="dense"
         id="lastName"
         name="lastName"
@@ -38,7 +42,7 @@ export default function DirectorFields() {
 
       {/* // I gotta make it some sort of array anyway... */}
       <TextField
-        required
+        required={required ? required : false}
         margin="dense"
         id="movies"
         name="movies"

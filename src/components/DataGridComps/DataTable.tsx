@@ -11,7 +11,7 @@ import {
   GridValidRowModel,
 } from "@mui/x-data-grid";
 import { useState } from "react";
-import AddPopup from "../AddPopup";
+import AddPopup from "../popups/AddPopup";
 import SearchInput from "./SearchInput";
 
 interface IDataTable {
@@ -52,16 +52,17 @@ export default function DataTable({ data }: IDataTable) {
   //     }
   //   };
 
-  const handleRowEditStop: GridEventListener<"rowEditStop"> = (
-    params,
-    event
-  ) => {
-    if (params.reason === GridRowEditStopReasons.rowFocusOut) {
-      event.defaultMuiPrevented = true;
-    }
-  };
+  // const handleRowEditStop: GridEventListener<"rowEditStop"> = (
+  //   params,
+  //   event
+  // ) => {
+  //   if (params.reason === GridRowEditStopReasons.rowFocusOut) {
+  //     event.defaultMuiPrevented = true;
+  //   }
+  // };
 
   const processRowUpdate = (newRow: GridRowModel) => {
+    // do i need these funcs?
     const updatedRow = { ...newRow, isNew: false };
     setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
     return updatedRow;
@@ -77,6 +78,12 @@ export default function DataTable({ data }: IDataTable) {
 
   const addNewRow = (newRow: GridValidRowModel) => {
     setRows((prevRows) => [...prevRows, newRow]);
+  };
+
+  const handleEditRow = (updatedRow: GridRowModel) => {
+    setRows((prevRows) =>
+      prevRows.map((row) => (row.id === updatedRow.id ? updatedRow : row))
+    );
   };
 
   return (
@@ -95,17 +102,17 @@ export default function DataTable({ data }: IDataTable) {
       <SearchInput dataType={dataType} onSearchResults={handleSearchResults} />
       <DataGrid
         rows={rows}
-        columns={dataType === "directors" ? directorColumns : movieColumns}
+        columns={
+          dataType === "directors"
+            ? directorColumns(handleEditRow)
+            : movieColumns(handleEditRow)
+        }
         editMode="row"
         rowModesModel={rowModesModel}
         onRowModesModelChange={handleRowModesModelChange}
-        onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
       />
       <AddPopup dataType={dataType} onAddRow={addNewRow} />
     </Box>
   );
 }
-
-// Bug: 2 requests are sent each time in the network,
-// so the ID in the client side jump in twos each time even though the DB looks fine
