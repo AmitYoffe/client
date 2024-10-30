@@ -1,5 +1,5 @@
+import DeletePopup from "@/components/popups/DeletePopup";
 import EditPopup from "@/components/popups/EditPopup";
-import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import {
   GridActionsCellItem,
   GridColDef,
@@ -8,7 +8,9 @@ import {
 
 export const directorColumns = (
   onEditRow: (newRow: GridRowModel) => void,
-  data: Record<string, any>
+  deleteRow: (deletedRow: GridRowModel) => void,
+  data: Record<string, any>,
+  dataType: string
 ): GridColDef[] => [
   {
     field: "firstName",
@@ -46,7 +48,7 @@ export const directorColumns = (
           icon={
             <EditPopup
               id={Number(id)}
-              dataType="directors"
+              dataType={dataType}
               onEditRow={onEditRow}
               data={data}
             />
@@ -55,7 +57,13 @@ export const directorColumns = (
           color="inherit"
         />,
         <GridActionsCellItem
-          icon={<DeleteIcon />}
+          icon={
+            <DeletePopup
+              id={Number(id)}
+              dataType={dataType}
+              onDeleteRow={deleteRow}
+            />
+          }
           label="Delete"
           color="inherit"
         />,

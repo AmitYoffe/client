@@ -20,7 +20,7 @@ export const patchForm = async (
 
     return await response.json();
   } catch (error) {
-    console.error("Error in creation of object:", error);
+    console.error("Error in patching of object:", error);
   }
 };
 

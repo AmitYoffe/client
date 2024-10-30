@@ -1,5 +1,6 @@
 const Server_API = process.env.NEXT_PUBLIC_API_URL;
 
+// todo: implement the fetchApi here
 export const handleSearch = async (query: string, endpoint: string) => {
   try {
     const response = await fetch(`${Server_API}/${endpoint}?search=${query}`);

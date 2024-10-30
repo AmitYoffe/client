@@ -1,12 +1,13 @@
 1) Add theme 
 2) add loading.tsx + error.tsx
-3) Component that showcases the movie / dirctor
+3) 
 4) 
 5) 
 
-30/10 - Today todo:
-1) Finish DELETE method and it's corresponding popup and button
+31/10 - Today todo:
+1) Bug fix: DELETE method works but UI is acting weird.
+ currently the rerendering of the the table rows takes place only after the (failed) second attempt to delete the same entry
 
-2)
+2) Component that showcases the movie / director objects
 
 3) 

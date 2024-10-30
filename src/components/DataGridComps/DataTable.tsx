@@ -34,6 +34,10 @@ export default function DataTable({ data }: IDataTable) {
     );
   };
 
+  const deleteRow = (deletedRow: GridRowModel) => {
+    setRows((prevRows) => prevRows.filter((row) => row.id !== deletedRow.id));
+  };
+
   return (
     <Box
       sx={{
@@ -51,8 +55,8 @@ export default function DataTable({ data }: IDataTable) {
       <DataGrid
         columns={
           dataType === "directors"
-            ? directorColumns(editRow, data)
-            : movieColumns(editRow, data)
+            ? directorColumns(editRow, deleteRow, data, dataType)
+            : movieColumns(editRow, deleteRow, data, dataType)
         }
         rows={rows}
       />
