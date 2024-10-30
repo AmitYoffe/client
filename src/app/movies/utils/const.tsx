@@ -6,9 +6,10 @@ import {
   GridRowModel,
 } from "@mui/x-data-grid";
 
-export const movieColumns: (
-  onEditRow: (newRow: GridRowModel) => void
-) => GridColDef[] = (onEditRow) => [
+export const movieColumns = (
+  onEditRow: (newRow: GridRowModel) => void,
+  data: Record<string, any>
+): GridColDef[] => [
   {
     field: "title",
     headerName: "Title",
@@ -39,6 +40,7 @@ export const movieColumns: (
               id={Number(id)}
               dataType="movies"
               onEditRow={onEditRow}
+              data={data}
             />
           }
           label="Edit"

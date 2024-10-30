@@ -1,12 +1,11 @@
 1) Add theme 
 2) add loading.tsx + error.tsx
-3) Finish DELETE method and it's corresponding popup and button
-4) Component that showcases the movie / dirctor
+3) Component that showcases the movie / dirctor
+4) 
 5) 
 
 30/10 - Today todo:
-1) Refactor the data-grid's CRUD into popup components with the same functionality
- - today i'm finishing the PATCH method 
+1) Finish DELETE method and it's corresponding popup and button
 
 2)
 

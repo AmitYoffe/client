@@ -3,7 +3,7 @@ import { movieColumns } from "@/app/movies/utils/const";
 import { Director, Movie } from "@/models";
 import { Box } from "@mui/material";
 import { DataGrid, GridRowModel, GridValidRowModel } from "@mui/x-data-grid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddPopup from "../popups/AddPopup";
 import SearchInput from "./SearchInput";
 
@@ -51,8 +51,8 @@ export default function DataTable({ data }: IDataTable) {
       <DataGrid
         columns={
           dataType === "directors"
-            ? directorColumns(editRow)
-            : movieColumns(editRow)
+            ? directorColumns(editRow, data)
+            : movieColumns(editRow, data)
         }
         rows={rows}
       />

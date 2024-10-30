@@ -2,22 +2,15 @@ import { TextField } from "@mui/material";
 
 interface IDirectorFields {
   required: boolean;
+  defaultData?: Record<string, any>;
 }
 
-export default function DirectorFields({ required }: IDirectorFields) {
+export default function DirectorFields({
+  required,
+  defaultData,
+}: IDirectorFields) {
   return (
     <>
-      {/* <TextField
-        autoFocus
-        required
-        margin="dense"
-        id="id"
-        name="email"
-        label="id"
-        type="email"
-        fullWidth
-        variant="standard"
-      /> */}
       <TextField
         autoFocus
         required={required ? required : false}
@@ -27,6 +20,7 @@ export default function DirectorFields({ required }: IDirectorFields) {
         label="firstName"
         fullWidth
         variant="standard"
+        defaultValue={defaultData?.firstName}
       />
       <TextField
         required={required ? required : false}
@@ -36,6 +30,7 @@ export default function DirectorFields({ required }: IDirectorFields) {
         label="lastName"
         fullWidth
         variant="standard"
+        defaultValue={defaultData?.lastName}
       />
       {/* Maybe make a dropdown of all movies already
        related to him or just all movies? */}
@@ -49,6 +44,7 @@ export default function DirectorFields({ required }: IDirectorFields) {
         label="movies"
         fullWidth
         variant="standard"
+        defaultValue={defaultData?.movies}
       />
     </>
   );

@@ -6,12 +6,10 @@ import {
   GridRowModel,
 } from "@mui/x-data-grid";
 
-// pass the current rows data to these fields so when a user edits,
-//  the fields will already show the current data
-
-export const directorColumns: (
-  onEditRow: (newRow: GridRowModel) => void
-) => GridColDef[] = (onEditRow) => [
+export const directorColumns = (
+  onEditRow: (newRow: GridRowModel) => void,
+  data: Record<string, any>
+): GridColDef[] => [
   {
     field: "firstName",
     headerName: "First Name",
@@ -50,6 +48,7 @@ export const directorColumns: (
               id={Number(id)}
               dataType="directors"
               onEditRow={onEditRow}
+              data={data}
             />
           }
           label="Edit"

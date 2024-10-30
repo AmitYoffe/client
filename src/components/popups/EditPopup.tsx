@@ -19,9 +19,15 @@ interface IEditPopup {
   id: number;
   dataType: string;
   onEditRow: (newRow: GridRowModel) => void;
+  data: Record<string, any>;
 }
 
-export default function EditPopup({ id, dataType, onEditRow }: IEditPopup) {
+export default function EditPopup({
+  id,
+  dataType,
+  onEditRow,
+  data,
+}: IEditPopup) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -73,9 +79,9 @@ export default function EditPopup({ id, dataType, onEditRow }: IEditPopup) {
         </DialogTitle>
         <DialogContent>
           {dataType === "directors" ? (
-            <DirectorFields required={false} />
+            <DirectorFields required={false} defaultData={data[id]} />
           ) : (
-            <MovieFields required={false} />
+            <MovieFields required={false} defaultData={data[id]} />
           )}
         </DialogContent>
         <DialogActions>
