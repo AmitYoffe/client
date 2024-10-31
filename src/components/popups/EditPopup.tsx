@@ -38,8 +38,6 @@ export default function EditPopup({
     setOpen(false);
   };
 
-  // maybe i just need a useEffect to rerender the lines and not a
-  // seperate rerendering function for the POST & PATCH methods
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -79,9 +77,9 @@ export default function EditPopup({
         </DialogTitle>
         <DialogContent>
           {dataType === "directors" ? (
-            <DirectorFields required={false} defaultData={data[id]} />
+            <DirectorFields required={false} defaultData={data[id - 1]} />
           ) : (
-            <MovieFields required={false} defaultData={data[id]} />
+            <MovieFields required={false} defaultData={data[id - 1]} />
           )}
         </DialogContent>
         <DialogActions>

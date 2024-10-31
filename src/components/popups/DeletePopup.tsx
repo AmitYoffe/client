@@ -6,7 +6,7 @@ import { Button, DialogActions, IconButton } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import { GridRowModel } from "@mui/x-data-grid";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 interface IDeletePopup {
   id: number;
@@ -29,15 +29,9 @@ export default function DeletePopup({
     setOpen(false);
   };
 
-  // maybe i just need a useEffect to rerender the lines and not a
-  // seperate rerendering function for the POST & PATCH methods
-  
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    // do i still need preventDefault
-    event.preventDefault();
-    const deleteSuccess = await deleteEntry(dataType, id);
-    if (deleteSuccess) onDeleteRow({ id });
-
+  const handleSubmit = async () => {
+    onDeleteRow({ id });
+    await deleteEntry(dataType, id);
     handleClose();
   };
 
@@ -46,14 +40,7 @@ export default function DeletePopup({
       <IconButton onClick={handleClickOpen}>
         <DeleteIcon />
       </IconButton>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          component: "form",
-          onSubmit: handleSubmit,
-        }}
-      >
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle
           sx={{
             display: "flex",
@@ -71,12 +58,15 @@ export default function DeletePopup({
             <LocalMoviesIcon />
           )}
         </DialogTitle>
-
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Delete</Button>
+          <Button onClick={handleSubmit}>Delete</Button>
         </DialogActions>
       </Dialog>
     </>
   );
 }
+
+// Bug fix:
+// when the last row is deleted an error of:
+// TypeError: Cannot read properties of undefined (reading 'id')
