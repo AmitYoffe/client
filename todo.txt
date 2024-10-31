@@ -2,7 +2,7 @@
 2) add loading.tsx + error.tsx
 3) 
 
-31/10 - Today todo:
+03/11 - Today todo:
 1) Component that showcases the movie / director objects 
 
 2) 

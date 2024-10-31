@@ -6,6 +6,7 @@ import { DataGrid, GridRowModel, GridValidRowModel } from "@mui/x-data-grid";
 import { useState } from "react";
 import AddPopup from "../popups/AddPopup";
 import SearchInput from "./SearchInput";
+import ShowEntry from "./ShowEntry";
 
 interface IDataTable {
   data: Movie[] | Director[];
@@ -13,6 +14,18 @@ interface IDataTable {
 
 export default function DataTable({ data }: IDataTable) {
   const [rows, setRows] = useState<GridValidRowModel[]>(data);
+  const [openEntryDialog, setOpenEntryDialog] = useState(false);
+  const [selectedRow, setSelectedRow] = useState<GridRowModel | null>(null);
+
+  const handleRowClick = (params: any) => {
+    setSelectedRow(data[params.id]);
+    setOpenEntryDialog(true);
+  };
+
+  const handleCloseRowPreview = () => {
+    setOpenEntryDialog(false);
+    setSelectedRow(null);
+  };
 
   const dataType = `${
     Array.isArray(data) && data.length > 0 && "title" in data[0]
@@ -59,8 +72,15 @@ export default function DataTable({ data }: IDataTable) {
             : movieColumns(editRow, deleteRow, data, dataType)
         }
         rows={rows}
+        onRowClick={handleRowClick}
       />
       <AddPopup dataType={dataType} onAddRow={addNewRow} />
+      <ShowEntry
+        dataType={dataType}
+        open={openEntryDialog}
+        handleClose={handleCloseRowPreview}
+        rowData={selectedRow}
+      />
     </Box>
   );
 }
