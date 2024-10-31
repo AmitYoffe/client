@@ -1,8 +1,8 @@
-1) Add theme 
+1) make some random page for the home route
 2) add loading.tsx + error.tsx
-3)  
+3) 
 
 31/10 - Today todo:
-1) Component that showcases the movie / director objects
+1) Component that showcases the movie / director objects 
 
 2) 
