@@ -1,13 +1,8 @@
 1) Add theme 
 2) add loading.tsx + error.tsx
-3) 
-4) 
-5) 
+3)  
 
 31/10 - Today todo:
-1) Bug fix: DELETE method works but UI is acting weird.
- currently the rerendering of the the table rows takes place only after the (failed) second attempt to delete the same entry
+1) Component that showcases the movie / director objects
 
-2) Component that showcases the movie / director objects
-
-3) 
+2) 

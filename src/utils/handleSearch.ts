@@ -1,6 +1,5 @@
 const Server_API = process.env.NEXT_PUBLIC_API_URL;
 
-// todo: implement the fetchApi here
 export const handleSearch = async (query: string, endpoint: string) => {
   try {
     const response = await fetch(`${Server_API}/${endpoint}?search=${query}`);
@@ -8,8 +7,8 @@ export const handleSearch = async (query: string, endpoint: string) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    const results = await response.json();
-    return results;
+
+    return response.json();
   } catch (error) {
     console.error("Error fetching search results:", error);
   }
