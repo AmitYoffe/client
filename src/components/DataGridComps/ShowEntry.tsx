@@ -36,7 +36,3 @@ export default function ShowEntry({
     </Dialog>
   );
 }
-
-// bug fix:
-// Clicking the last row in the data table gives
-// rowData:  null

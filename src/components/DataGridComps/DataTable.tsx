@@ -18,7 +18,7 @@ export default function DataTable({ data }: IDataTable) {
   const [selectedRow, setSelectedRow] = useState<GridRowModel | null>(null);
 
   const handleRowClick = (params: any) => {
-    setSelectedRow(data[params.id]);
+    setSelectedRow(data[params.id - 1]);
     setOpenEntryDialog(true);
   };
 
