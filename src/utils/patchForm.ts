@@ -7,12 +7,14 @@ export const patchForm = async (
 ) => {
   try {
     const updatedFields = Object.fromEntries(
-      Object.entries(formJson).filter(([_key, value]) => value.trim() !== "")
+      Object.entries(formJson).filter(([_, value]) => value.trim() !== "")
     );
 
     if (Object.keys(updatedFields).length === 0) {
-      console.error("No field values given for PATCH.");
-      return;
+      console.error(
+        `No values of object with id: ${id} given for PATCH method.`
+      );
+      return id;
     }
 
     const response = await fetch(`${Server_API}/${endpoint}/${id}`, {

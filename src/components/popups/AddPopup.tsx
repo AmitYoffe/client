@@ -39,7 +39,7 @@ export default function AddPopup({ dataType, onAddRow }: IAddPopup) {
   return (
     <>
       <Button
-        sx={{ width: "12em", marginX: "auto", marginTop: "16px" }}
+        sx={{ width: "192px", marginX: "auto", marginTop: "16px" }}
         variant="outlined"
         onClick={handleClickOpen}
         endIcon={

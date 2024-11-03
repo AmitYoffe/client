@@ -11,7 +11,7 @@ export const movieColumns = (
   {
     field: "title",
     headerName: "Title",
-    width: 180,
+    width: 280,
     type: "string",
     align: "left",
     headerAlign: "left",

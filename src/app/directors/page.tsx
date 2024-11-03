@@ -23,7 +23,7 @@ export default function DirectorsPage() {
         justifyContent: "center",
         alignItems: "flex-start",
         height: "100%",
-        padding: "5em",
+        padding: "80px",
       }}
     >
       {directors && <DataTable data={directors} />}

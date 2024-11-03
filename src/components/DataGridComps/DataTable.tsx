@@ -59,7 +59,7 @@ export default function DataTable({ data }: IDataTable) {
         height: "70vh",
         width: "100%",
         border: 1,
-        padding: "1em",
+        padding: "16px",
       }}
     >
       <SearchInput dataType={dataType} onSearchResults={handleSearchResults} />

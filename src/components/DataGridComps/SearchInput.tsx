@@ -33,7 +33,7 @@ export default function SearchInput({
         justifyContent: "space-between",
         width: "35%",
         minWidth: "200px",
-        paddingBottom: "1em",
+        paddingBottom: "16px",
       }}
       id="outlined-basic"
       variant="outlined"
