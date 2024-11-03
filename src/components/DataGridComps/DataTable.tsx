@@ -60,7 +60,6 @@ export default function DataTable({ data }: IDataTable) {
         height: "80%",
         width: "100%",
         border: 1,
-        // borderColor: 'primary.',
         padding: "1em",
       }}
     >
