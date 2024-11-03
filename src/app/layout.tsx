@@ -3,7 +3,6 @@ import { ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
 import theme from "./theme";
 
 const geistSans = localFont({

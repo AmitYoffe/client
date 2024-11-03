@@ -56,8 +56,7 @@ export default function DataTable({ data }: IDataTable) {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignContent: "center",
-        height: "80%",
+        height: "70vh",
         width: "100%",
         border: 1,
         padding: "1em",

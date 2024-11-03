@@ -21,8 +21,8 @@ export default function MoviesPage() {
       sx={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
+        alignItems: "flex-start",
+        height: "100%",
         padding: "5em",
       }}
     >
