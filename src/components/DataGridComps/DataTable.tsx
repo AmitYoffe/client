@@ -63,7 +63,9 @@ export default function DataTable({ data }: IDataTable) {
       }}
     >
       <SearchInput dataType={dataType} onSearchResults={handleSearchResults} />
-      <DataGrid
+      <DataGrid sx={{
+        
+      }}
         columns={
           dataType === "directors"
             ? directorColumns(editRow, deleteRow, data, dataType)

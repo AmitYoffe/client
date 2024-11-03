@@ -1,10 +1,7 @@
 import { Movie } from "./movie";
 
-export interface Director extends DirectorDto {
+export interface Director {
   id: number;
-}
-
-export interface DirectorDto {
   firstName: string;
   lastName: string;
   movies: Movie[];
