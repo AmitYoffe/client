@@ -70,3 +70,5 @@ export default function DeletePopup({
 // Bug fix:
 // when the last row is deleted an error of:
 // TypeError: Cannot read properties of undefined (reading 'id')
+//
+// -- Probably just need to make a exception condition --

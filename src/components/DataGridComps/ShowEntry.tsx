@@ -19,7 +19,6 @@ export default function ShowEntry({
   handleClose,
   rowData,
 }: IShowEntry) {
-  console.log("rowData: ", rowData);
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>
@@ -27,7 +26,7 @@ export default function ShowEntry({
       </DialogTitle>
       <DialogContent>
         <DialogContentText>
-          {JSON.stringify(rowData, null, 4)}
+          <pre>{JSON.stringify(rowData, null, 4)}</pre>
         </DialogContentText>
       </DialogContent>
       <DialogActions>
