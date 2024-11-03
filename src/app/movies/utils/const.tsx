@@ -1,10 +1,6 @@
 import DeletePopup from "@/components/popups/DeletePopup";
 import EditPopup from "@/components/popups/EditPopup";
-import {
-  GridActionsCellItem,
-  GridColDef,
-  GridRowModel,
-} from "@mui/x-data-grid";
+import { GridColDef, GridRowModel } from "@mui/x-data-grid";
 
 export const movieColumns = (
   onEditRow: (newRow: GridRowModel) => void,
@@ -36,28 +32,16 @@ export const movieColumns = (
     cellClassName: "actions",
     getActions: ({ id }) => {
       return [
-        <GridActionsCellItem
-          icon={
-            <EditPopup
-              id={Number(id)}
-              dataType={dataType}
-              onEditRow={onEditRow}
-              data={data}
-            />
-          }
-          label="Edit"
-          color="inherit"
+        <EditPopup
+          id={Number(id)}
+          dataType={dataType}
+          onEditRow={onEditRow}
+          data={data}
         />,
-        <GridActionsCellItem
-          icon={
-            <DeletePopup
-              id={Number(id)}
-              dataType={dataType}
-              onDeleteRow={deleteRow}
-            />
-          }
-          label="Delete"
-          color="inherit"
+        <DeletePopup
+          id={Number(id)}
+          dataType={dataType}
+          onDeleteRow={deleteRow}
         />,
       ];
     },
