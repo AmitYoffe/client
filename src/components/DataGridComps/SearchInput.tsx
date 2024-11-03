@@ -1,3 +1,4 @@
+import { useDebounce } from "@/hooks/useDebounce";
 import { handleSearch } from "@/utils/handleSearch";
 import Search from "@mui/icons-material/Search";
 import { InputAdornment, TextField } from "@mui/material";
@@ -14,14 +15,15 @@ export default function SearchInput({
   onSearchResults,
 }: SearchInputProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearchQuery = useDebounce(searchQuery);
 
   useEffect(() => {
-    const debounceTimeout = setTimeout(async () => {
-      const results = await handleSearch(searchQuery, dataType);
+    const fetchResults = async () => {
+      const results = await handleSearch(debouncedSearchQuery, dataType);
       onSearchResults(results);
-    }, 300);
+    };
 
-    return () => clearTimeout(debounceTimeout);
+    fetchResults();
   }, [searchQuery, dataType]);
 
   return (

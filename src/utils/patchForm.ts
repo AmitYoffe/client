@@ -6,12 +6,21 @@ export const patchForm = async (
   id: number
 ) => {
   try {
+    const updatedFields = Object.fromEntries(
+      Object.entries(formJson).filter(([_key, value]) => value.trim() !== "")
+    );
+
+    if (Object.keys(updatedFields).length === 0) {
+      console.error("No field values given for PATCH.");
+      return;
+    }
+
     const response = await fetch(`${Server_API}/${endpoint}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formJson),
+      body: JSON.stringify(updatedFields),
     });
 
     if (!response.ok) {
@@ -23,10 +32,3 @@ export const patchForm = async (
     console.error("Error in patching of object:", error);
   }
 };
-
-// Bug fix on edit:
-// the json that is sent through the network should not include untouched fields,
-// currently if i edit one line it send it like so:
-// {firstName: "Xyz", lastName: "", movies: ""}
-// and not
-// {firstName: "Xyz"}
