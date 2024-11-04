@@ -35,7 +35,6 @@ export default function SearchInput({
         minWidth: "200px",
         paddingBottom: "16px",
       }}
-      id="outlined-basic"
       variant="outlined"
       label={`Search ${dataType}`}
       value={searchQuery}
