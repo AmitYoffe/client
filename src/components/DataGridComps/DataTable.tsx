@@ -1,5 +1,4 @@
-import { directorColumns } from "@/app/directors/utils/const";
-import { movieColumns } from "@/app/movies/utils/const";
+import { directorColumns, movieColumns } from "@/app/index";
 import { Director, Movie } from "@/models";
 import { Box } from "@mui/material";
 import { DataGrid, GridRowModel, GridValidRowModel } from "@mui/x-data-grid";
@@ -27,11 +26,10 @@ export default function DataTable({ data }: IDataTable) {
     setSelectedRow(null);
   };
 
-  const dataType = `${
-    Array.isArray(data) && data.length > 0 && "title" in data[0]
+  const dataType = `${Array.isArray(data) && data.length > 0 && "title" in data[0]
       ? "movies"
       : "directors"
-  }`;
+    }`;
 
   const handleSearchResults = (results: GridValidRowModel[]) => {
     setRows(results);
