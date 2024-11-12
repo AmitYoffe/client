@@ -13,6 +13,7 @@ export default function DirectorFields({
     <>
       <TextField
         autoFocus
+        // just reqquired
         required={required ? required : false}
         margin="dense"
         id="firstName"

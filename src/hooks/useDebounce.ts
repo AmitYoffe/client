@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// add a default value and pass a prop seperately from it 
 export const useDebounce = (value: string) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 

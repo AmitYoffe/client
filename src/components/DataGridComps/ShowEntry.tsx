@@ -12,6 +12,7 @@ interface IShowEntry {
   rowData: GridValidRowModel | null;
 }
 
+// rename to entryPopup
 export default function ShowEntry({
   dataType,
   open,
@@ -20,6 +21,7 @@ export default function ShowEntry({
 }: IShowEntry) {
   return (
     <Dialog open={open} onClose={handleClose}>
+      {/* pass title as a prop */}
       <DialogTitle sx={{ display: "flex", alignItems: "center", gap: 1 }}>
         {`${dataType === "directors" ? "Director" : "Movie"} Information`}
         <InfoIcon />

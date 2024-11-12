@@ -38,6 +38,7 @@ export default function SearchInput({
       variant="outlined"
       label={`Search ${dataType}`}
       value={searchQuery}
+      // destructure here!!!
       onChange={(e) => setSearchQuery(e.target.value)}
       slotProps={{
         input: {

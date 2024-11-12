@@ -8,21 +8,23 @@ import { useEffect, useState } from "react";
 export default function DirectorsPage() {
   const [directors, setDirectors] = useState<Director[]>();
 
+  const fetchDirectors = async () => {
+    const data = await getDirectors(); // merge these two lines
+    setDirectors(data);
+  };
+
   useEffect(() => {
-    const fetchDirectors = async () => {
-      const data = await getDirectors();
-      setDirectors(data);
-    };
     fetchDirectors();
   }, []);
 
+  // use styled from mui
   return (
     <Box
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
-        height: "100%",
+        // height: "100%",
         padding: "80px",
       }}
     >

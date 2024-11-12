@@ -5,6 +5,7 @@ export const patchForm = async (
   endpoint: string,
   id: number
 ) => {
+  // the api should know what info it should get, this logic that trims that unnecessary fields should be inside the component itself, not here
   try {
     const updatedFields = Object.fromEntries(
       Object.entries(formJson).filter(([_, value]) => value.trim() !== "")

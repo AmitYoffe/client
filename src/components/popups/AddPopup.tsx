@@ -71,10 +71,12 @@ export default function AddPopup({ dataType, onAddRow }: IAddPopup) {
             <LocalMoviesIcon />
           )}
         </DialogTitle>
+        {/* Pass this DialogContent as prop instead */}
         <DialogContent>
           {dataType === "directors" ? (
-            <DirectorFields required={true} />
+            <DirectorFields required />
           ) : (
+            // jsurt required and not required={true}
             <MovieFields required={true} />
           )}
         </DialogContent>

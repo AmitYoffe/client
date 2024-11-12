@@ -7,19 +7,24 @@ import AddPopup from "../popups/AddPopup";
 import SearchInput from "./SearchInput";
 import ShowEntry from "./ShowEntry";
 
+// the convention here is DataTableProps or just props
 interface IDataTable {
+  // make data generic for scalablitiy
   data: Movie[] | Director[];
 }
 
+// remove default
+// make the component pure generic, currently it is "generic" for 2 options, its not really generic
 export default function DataTable({ data }: IDataTable) {
   const [rows, setRows] = useState<GridValidRowModel[]>(data);
   const [openEntryDialog, setOpenEntryDialog] = useState(false);
   const [selectedRow, setSelectedRow] = useState<GridRowModel | null>(null);
 
-  const handleRowClick = (params: any) => {
+  // take just id not params
+  function handleRowClick(params: any) {
     setSelectedRow(data[params.id - 1]);
     setOpenEntryDialog(true);
-  };
+  }
 
   const handleCloseRowPreview = () => {
     setOpenEntryDialog(false);

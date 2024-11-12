@@ -15,7 +15,7 @@ export default function MoviesPage() {
     };
     fetchMovies();
   }, []);
-
+  // read about useEffect wihtout []
   return (
     <Box
       sx={{
