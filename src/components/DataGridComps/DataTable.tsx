@@ -55,7 +55,7 @@ export const DataTable = ({ data, title }: DataTableProps<Director | Movie>) => 
             : movieColumns(editRow, deleteRow, data, title)
         }
         rows={rows}
-        onRowClick={() => handleRowClick(selectedRow?.id)}
+        onRowClick={(params) => handleRowClick(Number(params.id))}
       />
       <AddPopup title={title} onAddRow={addNewRow} />
       <EntryPopup
