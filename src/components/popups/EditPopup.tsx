@@ -15,6 +15,7 @@ import DirectorFields from "../textFields/DirectorFields";
 import MovieFields from "../textFields/MovieFields";
 import { patchForm } from "../utils";
 import { StyledDialogTitle } from "./styled/StyledDialogTitle";
+import { sanitizeJson } from "../utils/sanitizeJson";
 
 interface IEditPopup {
   id: number;
@@ -43,7 +44,8 @@ export const EditPopup = ({
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries((formData as any).entries());
-    const updatedRow = await patchForm(formJson, title, id);
+    const sanitizedJson = sanitizeJson(formJson)
+    const updatedRow = await patchForm(sanitizedJson, title, id);
     onEditRow(updatedRow);
     handleClose();
   };
