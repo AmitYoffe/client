@@ -1,4 +1,4 @@
-import { fetchAPI } from "../utils/api";
+import { fetchAPI } from "../utils/index";
 
 // add type
 export const getDirectors = (search?: string) => {

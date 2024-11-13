@@ -4,7 +4,7 @@ import Search from "@mui/icons-material/Search";
 import { InputAdornment } from "@mui/material";
 import { GridValidRowModel } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
-import { handleSearch } from "../utils";
+import { handleSearch } from "../utils/index";
 import { StyledDialogTitle } from "./styled/StyledTextField";
 
 interface SearchInputProps {

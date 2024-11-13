@@ -9,7 +9,7 @@ import { GridRowModel } from "@mui/x-data-grid";
 import { FormEvent, useState } from "react";
 import DirectorFields from "../textFields/DirectorFields";
 import MovieFields from "../textFields/MovieFields";
-import { postForm } from "../utils";
+import { postForm } from "../utils/index";
 import { StyledButton } from "./styled/StyledButton";
 import { StyledDialogTitle } from "./styled/StyledDialogTitle";
 

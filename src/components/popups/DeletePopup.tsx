@@ -6,7 +6,7 @@ import { Button, DialogActions, IconButton } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import { GridRowModel } from "@mui/x-data-grid";
 import { useState } from "react";
-import { deleteEntry } from "../utils";
+import { deleteEntry } from "../utils/index";
 import { StyledDialogTitle } from "./styled/StyledDialogTitle";
 
 interface IDeletePopup {

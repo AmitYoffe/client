@@ -13,9 +13,8 @@ import { GridRowModel } from "@mui/x-data-grid";
 import { FormEvent, useState } from "react";
 import DirectorFields from "../textFields/DirectorFields";
 import MovieFields from "../textFields/MovieFields";
-import { patchForm } from "../utils";
+import { patchForm, sanitizeJson } from "../utils/index";
 import { StyledDialogTitle } from "./styled/StyledDialogTitle";
-import { sanitizeJson } from "../utils/sanitizeJson";
 
 interface IEditPopup {
   id: number;
