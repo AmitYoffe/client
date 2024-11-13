@@ -1,11 +1,11 @@
 import { directorColumns, movieColumns } from "@/app/index";
-import { Director, Movie, Title } from "@/models";
-import { Box } from "@mui/material";
+import { Director, Movie, Title } from "@/components/models";
 import { DataGrid, GridRowModel, GridValidRowModel } from "@mui/x-data-grid";
 import { useState } from "react";
 import { AddPopup } from "../popups/AddPopup";
 import { EntryPopup } from "./EntryPopup";
 import { SearchInput } from "./SearchInput";
+import { StyledBox } from "./styled/StyledBox";
 
 interface DataTableProps<T> {
   data: T[];
@@ -46,16 +46,7 @@ export const DataTable = ({ data, title }: DataTableProps<Director | Movie>) => 
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: "70vh",
-        width: "100%",
-        border: 1,
-        padding: "16px",
-      }}
-    >
+    <StyledBox>
       <SearchInput title={title} onSearchResults={handleSearchResults} />
       <DataGrid
         columns={
@@ -73,6 +64,6 @@ export const DataTable = ({ data, title }: DataTableProps<Director | Movie>) => 
         handleClose={handleCloseRowPreview}
         rowData={selectedRow}
       />
-    </Box>
+    </StyledBox>
   );
 }

@@ -1,4 +1,4 @@
-import { patchForm } from "@/utils/patchForm";
+import { Title } from "@/components/models";
 import EditIcon from "@mui/icons-material/Edit";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
@@ -9,12 +9,12 @@ import {
   IconButton,
 } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
 import { GridRowModel } from "@mui/x-data-grid";
 import { FormEvent, useState } from "react";
 import DirectorFields from "../textFields/DirectorFields";
 import MovieFields from "../textFields/MovieFields";
-import { Title } from "@/models";
+import { patchForm } from "../utils";
+import { StyledDialogTitle } from "./styled/StyledDialogTitle";
 
 interface IEditPopup {
   id: number;
@@ -61,21 +61,14 @@ export const EditPopup = ({
           onSubmit: handleSubmit,
         }}
       >
-        <DialogTitle
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
+        <StyledDialogTitle>
           {`Edit ${title}`}
           {title === "directors" ? (
             <VideoCameraFrontIcon />
           ) : (
             <LocalMoviesIcon />
           )}
-        </DialogTitle>
+        </StyledDialogTitle>
         <DialogContent>
           {title === "directors" ? (
             <DirectorFields required={false} defaultData={data[id - 1]} />

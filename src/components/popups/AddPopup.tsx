@@ -1,16 +1,17 @@
-import { Title } from "@/models";
-import { postForm } from "@/utils/postForm";
+import { Title } from "@/components/models";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
 import { Button, DialogActions, DialogContent } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
 import { GridRowModel } from "@mui/x-data-grid";
 import { FormEvent, useState } from "react";
 import DirectorFields from "../textFields/DirectorFields";
 import MovieFields from "../textFields/MovieFields";
+import { postForm } from "../utils";
+import { StyledButton } from "./styled/StyledButton";
+import { StyledDialogTitle } from "./styled/StyledDialogTitle";
 
 interface IAddPopup {
   title: Title;
@@ -39,8 +40,7 @@ export const AddPopup = ({ title, onAddRow }: IAddPopup) => {
 
   return (
     <>
-      <Button
-        sx={{ width: "192px", marginX: "auto", marginTop: "16px" }}
+      <StyledButton
         variant="outlined"
         onClick={handleClickOpen}
         endIcon={
@@ -48,7 +48,7 @@ export const AddPopup = ({ title, onAddRow }: IAddPopup) => {
         }
       >
         {`Add ${title}`}
-      </Button>
+      </StyledButton>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -57,21 +57,14 @@ export const AddPopup = ({ title, onAddRow }: IAddPopup) => {
           onSubmit: handleSubmit,
         }}
       >
-        <DialogTitle
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
+        <StyledDialogTitle>
           {`Add ${title}`}
           {title === "directors" ? (
             <VideoCameraFrontIcon />
           ) : (
             <LocalMoviesIcon />
           )}
-        </DialogTitle>
+        </StyledDialogTitle>
         {/* Pass this DialogContent as prop instead */}
         <DialogContent>
           {title === "directors" ? (

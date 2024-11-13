@@ -1,13 +1,13 @@
-import { Title } from "@/models";
-import { deleteEntry } from "@/utils";
+import { Title } from "@/components/models";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
 import { Button, DialogActions, IconButton } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
 import { GridRowModel } from "@mui/x-data-grid";
 import { useState } from "react";
+import { deleteEntry } from "../utils";
+import { StyledDialogTitle } from "./styled/StyledDialogTitle";
 
 interface IDeletePopup {
   id: number;
@@ -42,21 +42,14 @@ export const DeletePopup = ({
         <DeleteIcon />
       </IconButton>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
+        <StyledDialogTitle>
           {`Are you sure you want to delete this special one out of all the ${title}?`}
           {title === "directors" ? (
             <VideoCameraFrontIcon />
           ) : (
             <LocalMoviesIcon />
           )}
-        </DialogTitle>
+        </StyledDialogTitle>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleSubmit}>Delete</Button>

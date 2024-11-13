@@ -1,6 +1,6 @@
 import {DeletePopup} from "@/components/popups/DeletePopup";
 import {EditPopup} from "@/components/popups/EditPopup";
-import { Title } from "@/models";
+import { Title } from "@/components/models";
 import { GridColDef, GridRowModel } from "@mui/x-data-grid";
 
 export const movieColumns = (

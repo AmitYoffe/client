@@ -1,8 +1,8 @@
 "use client";
 import { DataTable } from "@/components/DataGridComps/DataTable";
-import { Director } from "@/models/director";
-import { getDirectors } from "@/services/directorService";
-import { Box } from "@mui/material";
+import { Director } from "@/components/models/director";
+import { getDirectors } from "@/components/services/directorService";
+import { StyledBox } from "@/components/styled/StyledPageBox";
 import { useEffect, useState } from "react";
 
 const DirectorsPage = () => {
@@ -17,18 +17,10 @@ const DirectorsPage = () => {
     fetchDirectors();
   }, []);
 
-  // use styled from mui
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        padding: "80px",
-      }}
-    >
+    <StyledBox>
       {directors && <DataTable data={directors} title={"directors"} />}
-    </Box>
+    </StyledBox>
   );
 }
 

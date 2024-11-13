@@ -1,10 +1,10 @@
-import { Title } from "@/models";
+import { Title } from "@/components/models";
 import InfoIcon from "@mui/icons-material/Info";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
-import DialogTitle from "@mui/material/DialogTitle";
 import { GridValidRowModel } from "@mui/x-data-grid";
+import { StyledDialogTitle } from "../popups/styled/StyledDialogTitle";
 
 interface IShowEntry {
   title: Title;
@@ -21,11 +21,10 @@ export const EntryPopup = ({
 }: IShowEntry) => {
   return (
     <Dialog open={open} onClose={handleClose}>
-      {/* pass title as a prop */}
-      <DialogTitle sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+      <StyledDialogTitle>
         {`${title} information`}
         <InfoIcon />
-      </DialogTitle>
+      </StyledDialogTitle>
       <pre
         style={{
           backgroundColor: "#f5f5f5",
