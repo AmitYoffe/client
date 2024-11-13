@@ -1,21 +1,22 @@
 "use client";
-import DataTable from "@/components/DataGridComps/DataTable";
+import { DataTable } from "@/components/DataGridComps/DataTable";
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Movie } from "../../models/movie";
 import { getMovies } from "../../services/movieService";
 
-export default function MoviesPage() {
+const MoviesPage = () => {
   const [movies, setMovies] = useState<Movie[]>();
 
+  const fetchMovies = async () => {
+    const movies: Movie[] = await getMovies();
+    setMovies(movies);
+  };
+
   useEffect(() => {
-    const fetchMovies = async () => {
-      const movies: Movie[] = await getMovies();
-      setMovies(movies);
-    };
     fetchMovies();
   }, []);
-  // read about useEffect wihtout []
+
   return (
     <Box
       sx={{
@@ -26,7 +27,9 @@ export default function MoviesPage() {
         padding: "80px",
       }}
     >
-      {movies && <DataTable data={movies} />}
+      {movies && <DataTable data={movies} title={"movies"} />}
     </Box>
   );
 }
+
+export default MoviesPage

@@ -13,8 +13,7 @@ export default function DirectorFields({
     <>
       <TextField
         autoFocus
-        // just reqquired
-        required={required ? required : false}
+        required={required}
         margin="dense"
         id="firstName"
         name="firstName"
@@ -24,7 +23,7 @@ export default function DirectorFields({
         defaultValue={defaultData?.firstName}
       />
       <TextField
-        required={required ? required : false}
+        required={required}
         margin="dense"
         id="lastName"
         name="lastName"
@@ -34,7 +33,7 @@ export default function DirectorFields({
         defaultValue={defaultData?.lastName}
       />
       <TextField
-        required={required ? required : false}
+        required={required}
         margin="dense"
         id="movies"
         name="movies"

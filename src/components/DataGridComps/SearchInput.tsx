@@ -1,4 +1,5 @@
 import { useDebounce } from "@/hooks/useDebounce";
+import { Title } from "@/models";
 import { handleSearch } from "@/utils/handleSearch";
 import Search from "@mui/icons-material/Search";
 import { InputAdornment, TextField } from "@mui/material";
@@ -6,25 +7,25 @@ import { GridValidRowModel } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 
 interface SearchInputProps {
-  dataType: string;
   onSearchResults: (results: GridValidRowModel[]) => void;
+  title: Title
 }
 
-export default function SearchInput({
-  dataType,
+export const SearchInput = ({
   onSearchResults,
-}: SearchInputProps) {
+  title
+}: SearchInputProps) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const debouncedSearchQuery = useDebounce(searchQuery);
-
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+  
   useEffect(() => {
     const fetchResults = async () => {
-      const results = await handleSearch(debouncedSearchQuery, dataType);
+      const results = await handleSearch(debouncedSearchQuery, title);
       onSearchResults(results);
     };
 
     fetchResults();
-  }, [searchQuery, dataType]);
+  }, [searchQuery, title]);
 
   return (
     <TextField
@@ -36,10 +37,9 @@ export default function SearchInput({
         paddingBottom: "16px",
       }}
       variant="outlined"
-      label={`Search ${dataType}`}
+      label={`Search ${title}`}
       value={searchQuery}
-      // destructure here!!!
-      onChange={(e) => setSearchQuery(e.target.value)}
+      onChange={({ target: { value } }) => setSearchQuery(value)}
       slotProps={{
         input: {
           endAdornment: (

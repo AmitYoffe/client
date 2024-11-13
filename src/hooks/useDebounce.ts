@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 
-// add a default value and pass a prop seperately from it 
-export const useDebounce = (value: string) => {
+export const useDebounce = (value: string, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
-
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(value);
-    }, 300);
+    }, delay);
 
-    return clearTimeout(handler);
+    return () => clearTimeout(handler);
   }, [value]);
 
   return debouncedValue;

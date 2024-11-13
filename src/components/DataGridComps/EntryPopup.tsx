@@ -1,3 +1,4 @@
+import { Title } from "@/models";
 import InfoIcon from "@mui/icons-material/Info";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -6,24 +7,23 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { GridValidRowModel } from "@mui/x-data-grid";
 
 interface IShowEntry {
-  dataType: string;
+  title: Title;
   open: boolean;
   handleClose: () => void;
   rowData: GridValidRowModel | null;
 }
 
-// rename to entryPopup
-export default function ShowEntry({
-  dataType,
+export const EntryPopup = ({
+  title,
   open,
   handleClose,
   rowData,
-}: IShowEntry) {
+}: IShowEntry) => {
   return (
     <Dialog open={open} onClose={handleClose}>
       {/* pass title as a prop */}
       <DialogTitle sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        {`${dataType === "directors" ? "Director" : "Movie"} Information`}
+        {`${title} information`}
         <InfoIcon />
       </DialogTitle>
       <pre

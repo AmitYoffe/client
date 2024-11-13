@@ -14,20 +14,21 @@ import { GridRowModel } from "@mui/x-data-grid";
 import { FormEvent, useState } from "react";
 import DirectorFields from "../textFields/DirectorFields";
 import MovieFields from "../textFields/MovieFields";
+import { Title } from "@/models";
 
 interface IEditPopup {
   id: number;
-  dataType: string;
+  title: Title;
   onEditRow: (newRow: GridRowModel) => void;
   data: Record<string, any>;
 }
 
-export default function EditPopup({
+export const EditPopup = ({
   id,
-  dataType,
+  title,
   onEditRow,
   data,
-}: IEditPopup) {
+}: IEditPopup) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -42,7 +43,7 @@ export default function EditPopup({
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries((formData as any).entries());
-    const updatedRow = await patchForm(formJson, dataType, id);
+    const updatedRow = await patchForm(formJson, title, id);
     onEditRow(updatedRow);
     handleClose();
   };
@@ -68,15 +69,15 @@ export default function EditPopup({
             gap: "6px",
           }}
         >
-          {`Edit ${dataType === "directors" ? "Director" : "Movie"}`}
-          {dataType === "directors" ? (
+          {`Edit ${title}`}
+          {title === "directors" ? (
             <VideoCameraFrontIcon />
           ) : (
             <LocalMoviesIcon />
           )}
         </DialogTitle>
         <DialogContent>
-          {dataType === "directors" ? (
+          {title === "directors" ? (
             <DirectorFields required={false} defaultData={data[id - 1]} />
           ) : (
             <MovieFields required={false} defaultData={data[id - 1]} />

@@ -1,28 +1,24 @@
 import { directorColumns, movieColumns } from "@/app/index";
-import { Director, Movie } from "@/models";
+import { Director, Movie, Title } from "@/models";
 import { Box } from "@mui/material";
 import { DataGrid, GridRowModel, GridValidRowModel } from "@mui/x-data-grid";
 import { useState } from "react";
-import AddPopup from "../popups/AddPopup";
-import SearchInput from "./SearchInput";
-import ShowEntry from "./ShowEntry";
+import { AddPopup } from "../popups/AddPopup";
+import { EntryPopup } from "./EntryPopup";
+import { SearchInput } from "./SearchInput";
 
-// the convention here is DataTableProps or just props
-interface IDataTable {
-  // make data generic for scalablitiy
-  data: Movie[] | Director[];
+interface DataTableProps<T> {
+  data: T[];
+  title: Title
 }
 
-// remove default
-// make the component pure generic, currently it is "generic" for 2 options, its not really generic
-export default function DataTable({ data }: IDataTable) {
+export const DataTable = ({ data, title }: DataTableProps<Director | Movie>) => {
   const [rows, setRows] = useState<GridValidRowModel[]>(data);
   const [openEntryDialog, setOpenEntryDialog] = useState(false);
   const [selectedRow, setSelectedRow] = useState<GridRowModel | null>(null);
 
-  // take just id not params
-  function handleRowClick(params: any) {
-    setSelectedRow(data[params.id - 1]);
+  const handleRowClick = (id: number) => {
+    setSelectedRow(data[id - 1]);
     setOpenEntryDialog(true);
   }
 
@@ -30,11 +26,6 @@ export default function DataTable({ data }: IDataTable) {
     setOpenEntryDialog(false);
     setSelectedRow(null);
   };
-
-  const dataType = `${Array.isArray(data) && data.length > 0 && "title" in data[0]
-      ? "movies"
-      : "directors"
-    }`;
 
   const handleSearchResults = (results: GridValidRowModel[]) => {
     setRows(results);
@@ -65,19 +56,19 @@ export default function DataTable({ data }: IDataTable) {
         padding: "16px",
       }}
     >
-      <SearchInput dataType={dataType} onSearchResults={handleSearchResults} />
+      <SearchInput title={title} onSearchResults={handleSearchResults} />
       <DataGrid
         columns={
-          dataType === "directors"
-            ? directorColumns(editRow, deleteRow, data, dataType)
-            : movieColumns(editRow, deleteRow, data, dataType)
+          title === "directors"
+            ? directorColumns(editRow, deleteRow, data, title)
+            : movieColumns(editRow, deleteRow, data, title)
         }
         rows={rows}
-        onRowClick={handleRowClick}
+        onRowClick={() => handleRowClick(selectedRow?.id)}
       />
-      <AddPopup dataType={dataType} onAddRow={addNewRow} />
-      <ShowEntry
-        dataType={dataType}
+      <AddPopup title={title} onAddRow={addNewRow} />
+      <EntryPopup
+        title={title}
         open={openEntryDialog}
         handleClose={handleCloseRowPreview}
         rowData={selectedRow}

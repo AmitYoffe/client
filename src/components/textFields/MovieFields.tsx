@@ -10,7 +10,7 @@ export default function MovieFields({ required, defaultData }: IMovieFields) {
     <>
       <TextField
         autoFocus
-        required={required ? required : false}
+        required={required}
         margin="dense"
         id="title"
         name="title"
@@ -19,9 +19,8 @@ export default function MovieFields({ required, defaultData }: IMovieFields) {
         variant="standard"
         defaultValue={defaultData?.title}
       />
-      {/* Maybe make a dropdown of all directors? */}
       <TextField
-        required={required ? required : false}
+        required={required}
         margin="dense"
         id="director"
         name="director"
@@ -31,7 +30,7 @@ export default function MovieFields({ required, defaultData }: IMovieFields) {
         defaultValue={defaultData?.director}
       />
       <TextField
-        required={required ? required : false}
+        required={required}
         margin="dense"
         id="year"
         name="year"

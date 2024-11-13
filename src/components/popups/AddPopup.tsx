@@ -1,3 +1,4 @@
+import { Title } from "@/models";
 import { postForm } from "@/utils/postForm";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
@@ -12,11 +13,11 @@ import DirectorFields from "../textFields/DirectorFields";
 import MovieFields from "../textFields/MovieFields";
 
 interface IAddPopup {
-  dataType: string;
+  title: Title;
   onAddRow: (newRow: GridRowModel) => void;
 }
 
-export default function AddPopup({ dataType, onAddRow }: IAddPopup) {
+export const AddPopup = ({ title, onAddRow }: IAddPopup) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -31,7 +32,7 @@ export default function AddPopup({ dataType, onAddRow }: IAddPopup) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries((formData as any).entries());
-    const newRow = await postForm(formJson, dataType);
+    const newRow = await postForm(formJson, title);
     onAddRow(newRow);
     handleClose();
   };
@@ -43,10 +44,10 @@ export default function AddPopup({ dataType, onAddRow }: IAddPopup) {
         variant="outlined"
         onClick={handleClickOpen}
         endIcon={
-          dataType === "directors" ? <PostAddIcon /> : <PersonAddAlt1Icon />
+          title === "directors" ? <PostAddIcon /> : <PersonAddAlt1Icon />
         }
       >
-        {`Add ${dataType === "directors" ? "Director" : "Movie"}`}
+        {`Add ${title}`}
       </Button>
       <Dialog
         open={open}
@@ -64,8 +65,8 @@ export default function AddPopup({ dataType, onAddRow }: IAddPopup) {
             gap: "6px",
           }}
         >
-          {`Add ${dataType === "directors" ? "Director" : "Movie"}`}
-          {dataType === "directors" ? (
+          {`Add ${title}`}
+          {title === "directors" ? (
             <VideoCameraFrontIcon />
           ) : (
             <LocalMoviesIcon />
@@ -73,11 +74,10 @@ export default function AddPopup({ dataType, onAddRow }: IAddPopup) {
         </DialogTitle>
         {/* Pass this DialogContent as prop instead */}
         <DialogContent>
-          {dataType === "directors" ? (
+          {title === "directors" ? (
             <DirectorFields required />
           ) : (
-            // jsurt required and not required={true}
-            <MovieFields required={true} />
+            <MovieFields required />
           )}
         </DialogContent>
         <DialogActions>

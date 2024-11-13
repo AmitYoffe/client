@@ -1,3 +1,4 @@
+import { Title } from "@/models";
 import { deleteEntry } from "@/utils";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
@@ -10,15 +11,15 @@ import { useState } from "react";
 
 interface IDeletePopup {
   id: number;
-  dataType: string;
+  title: Title;
   onDeleteRow: (newRow: GridRowModel) => void;
 }
 
-export default function DeletePopup({
+export const DeletePopup = ({
   id,
-  dataType,
+  title,
   onDeleteRow,
-}: IDeletePopup) {
+}: IDeletePopup) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -31,7 +32,7 @@ export default function DeletePopup({
 
   const handleSubmit = async () => {
     onDeleteRow({ id });
-    await deleteEntry(dataType, id);
+    await deleteEntry(title, id);
     handleClose();
   };
 
@@ -49,10 +50,8 @@ export default function DeletePopup({
             gap: "6px",
           }}
         >
-          {`Are you sure you want to delete this ${
-            dataType === "directors" ? "director" : "movie"
-          }`}
-          {dataType === "directors" ? (
+          {`Are you sure you want to delete this special one out of all the ${title}?`}
+          {title === "directors" ? (
             <VideoCameraFrontIcon />
           ) : (
             <LocalMoviesIcon />
