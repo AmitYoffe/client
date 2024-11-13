@@ -1,6 +1,6 @@
 const Server_API = process.env.NEXT_PUBLIC_API_URL;
 
-export const fetchAPI = async (endpoint: string, options?: RequestInit) => {
+export const fetchAPI = async <Data>(endpoint: string, options?: RequestInit): Promise<Data> => {
   const response = await fetch(`${Server_API}/${endpoint}`, options);
 
   if (!response.ok) {

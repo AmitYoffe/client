@@ -1,6 +1,6 @@
+import { Director } from "../models";
 import { fetchAPI } from "../utils/index";
 
-// add type
-export const getDirectors = (search?: string) => {
-    return fetchAPI(`directors/${search || ''}`)
+export const getDirectors = (search?: string): Promise<Director[]> => {
+    return fetchAPI<Director[]>(`directors/${search || ''}`)
 }

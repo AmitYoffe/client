@@ -12,6 +12,7 @@ interface SearchInputProps {
   title: Title
 }
 
+// search is still a little buggy
 export const SearchInput = ({
   onSearchResults,
   title
