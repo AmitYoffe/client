@@ -12,7 +12,6 @@ interface SearchInputProps {
   title: Title
 }
 
-// search is still a little buggy
 export const SearchInput = ({
   onSearchResults,
   title
@@ -27,7 +26,7 @@ export const SearchInput = ({
     };
 
     fetchResults();
-  }, [searchQuery, title]);
+  }, [searchQuery, title, debouncedSearchQuery]);
 
   return (
     <StyledDialogTitle
